@@ -1,0 +1,14 @@
+{
+  "name": "chowdhari-ads",
+  "version": "1.0.0",
+  "description": "Chowdhari Ads Daily Register",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "author": "Tushar Chowdhari",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^42.5.0"
+  }
+}

@@ -1,0 +1,2659 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Chowdhari Ads Daily Register</title>
+  <style>
+    :root {
+      --ink: #13202b;
+      --muted: #5f7180;
+      --line: rgba(255, 255, 255, 0.52);
+      --line-strong: rgba(255, 255, 255, 0.74);
+      --paper: #e8efe9;
+      --panel: rgba(255, 255, 255, 0.64);
+      --panel-strong: rgba(255, 255, 255, 0.82);
+      --field: rgba(255, 255, 255, 0.72);
+      --teal: #047c76;
+      --teal-dark: #055f5c;
+      --amber: #b46d12;
+      --rose: #a83a32;
+      --green: #167451;
+      --shadow: 0 18px 48px rgba(22, 32, 42, 0.18);
+      --soft-shadow: 0 10px 28px rgba(22, 32, 42, 0.12);
+      --glass-highlight: inset 0 1px 0 rgba(255, 255, 255, 0.72);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        repeating-linear-gradient(90deg, rgba(16, 39, 48, 0.055) 0 1px, transparent 1px 76px),
+        repeating-linear-gradient(0deg, rgba(16, 39, 48, 0.045) 0 1px, transparent 1px 76px),
+        linear-gradient(132deg, #dcebe7 0%, #f4efe2 42%, #d6e4ed 100%);
+      background-attachment: fixed;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 15px;
+      line-height: 1.45;
+    }
+
+    button,
+    input,
+    select,
+    textarea {
+      font: inherit;
+    }
+
+    button {
+      border: 0;
+      cursor: pointer;
+    }
+
+    .app-shell {
+      min-height: 100vh;
+      display: grid;
+      grid-template-rows: auto 1fr;
+    }
+
+    header {
+      background: rgba(14, 40, 47, 0.78);
+      backdrop-filter: blur(18px) saturate(150%);
+      -webkit-backdrop-filter: blur(18px) saturate(150%);
+      color: #fff;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.24);
+      box-shadow: 0 12px 36px rgba(17, 38, 47, 0.18);
+    }
+
+    .topbar {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 18px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .brand {
+      min-width: 220px;
+    }
+
+    .brand h1 {
+      margin: 0;
+      font-size: 24px;
+      line-height: 1.1;
+      letter-spacing: 0;
+    }
+
+    .brand p {
+      margin: 4px 0 0;
+      color: rgba(230, 242, 245, 0.82);
+      font-size: 13px;
+    }
+
+    .day-control {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .day-control label {
+      color: rgba(232, 244, 247, 0.88);
+      font-weight: 700;
+      font-size: 13px;
+    }
+
+    .day-control input {
+      min-height: 40px;
+      border: 1px solid rgba(255, 255, 255, 0.38);
+      background: rgba(255, 255, 255, 0.12);
+      color: #fff;
+      border-radius: 6px;
+      padding: 8px 10px;
+      color-scheme: dark;
+      box-shadow: var(--glass-highlight);
+    }
+
+    main {
+      width: 100%;
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 26px 20px 40px;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: minmax(320px, 420px) 1fr;
+      gap: 18px;
+      align-items: start;
+    }
+
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+      min-width: 0;
+      backdrop-filter: blur(20px) saturate(145%);
+      -webkit-backdrop-filter: blur(20px) saturate(145%);
+      background-clip: padding-box;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .panel::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      box-shadow: var(--glass-highlight);
+    }
+
+    .panel-head {
+      padding: 16px 18px 12px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.42);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      background: rgba(255, 255, 255, 0.24);
+    }
+
+    .panel-head h2 {
+      margin: 0;
+      font-size: 18px;
+      letter-spacing: 0;
+    }
+
+    .panel-head .hint {
+      margin: 2px 0 0;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    form {
+      padding: 16px 18px 18px;
+      display: grid;
+      gap: 14px;
+    }
+
+    .field {
+      display: grid;
+      gap: 6px;
+    }
+
+    .field label,
+    .inline-label {
+      font-size: 12px;
+      font-weight: 700;
+      color: #263645;
+      text-transform: uppercase;
+      letter-spacing: 0;
+    }
+
+    .field input,
+    .field select,
+    .field textarea {
+      width: 100%;
+      min-height: 42px;
+      border: 1px solid rgba(255, 255, 255, 0.68);
+      border-radius: 6px;
+      background: var(--field);
+      color: var(--ink);
+      padding: 9px 10px;
+      outline: none;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.82), 0 8px 18px rgba(31, 48, 58, 0.06);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+
+    .field textarea {
+      min-height: 76px;
+      resize: vertical;
+    }
+
+    .field input:focus,
+    .field select:focus,
+    .field textarea:focus {
+      border-color: var(--teal);
+      background: rgba(255, 255, 255, 0.9);
+      box-shadow: 0 0 0 3px rgba(4, 124, 118, 0.18), 0 10px 22px rgba(31, 48, 58, 0.09);
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .amount-preview {
+      border: 1px solid rgba(255, 255, 255, 0.62);
+      background: rgba(238, 250, 249, 0.54);
+      border-radius: 8px;
+      padding: 12px;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+      box-shadow: var(--glass-highlight), 0 12px 24px rgba(17, 61, 67, 0.08);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+    }
+
+    .amount-preview span {
+      display: block;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .amount-preview strong {
+      display: block;
+      margin-top: 2px;
+      font-size: 18px;
+      color: var(--ink);
+      overflow-wrap: anywhere;
+    }
+
+    .actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      min-height: 42px;
+      border-radius: 6px;
+      padding: 0 14px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      font-weight: 700;
+      color: #fff;
+      background: linear-gradient(180deg, rgba(9, 142, 135, 0.96), rgba(4, 112, 107, 0.96));
+      box-shadow: 0 10px 22px rgba(4, 112, 107, 0.22), inset 0 1px 0 rgba(255, 255, 255, 0.32);
+    }
+
+    .btn:hover {
+      background: linear-gradient(180deg, rgba(6, 124, 119, 0.98), rgba(5, 95, 92, 0.98));
+    }
+
+    .btn.secondary {
+      background: rgba(255, 255, 255, 0.56);
+      color: #23303d;
+      border: 1px solid rgba(255, 255, 255, 0.66);
+      box-shadow: var(--glass-highlight), 0 8px 18px rgba(31, 48, 58, 0.08);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+
+    .btn.secondary:hover {
+      background: rgba(255, 255, 255, 0.76);
+    }
+
+    .btn.warning {
+      background: linear-gradient(180deg, rgba(199, 126, 32, 0.96), rgba(160, 91, 12, 0.96));
+    }
+
+    .btn.danger {
+      background: var(--rose);
+    }
+
+    .dashboard {
+      display: grid;
+      gap: 18px;
+      min-width: 0;
+    }
+
+    .summary-grid {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(120px, 1fr));
+      gap: 10px;
+    }
+
+    .metric {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 13px 14px;
+      min-height: 88px;
+      box-shadow: var(--soft-shadow);
+      backdrop-filter: blur(18px) saturate(140%);
+      -webkit-backdrop-filter: blur(18px) saturate(140%);
+      box-shadow: var(--glass-highlight), var(--soft-shadow);
+    }
+
+    .metric span {
+      display: block;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    .metric strong {
+      display: block;
+      margin-top: 6px;
+      font-size: 23px;
+      overflow-wrap: anywhere;
+    }
+
+    .metric.money strong {
+      color: var(--green);
+    }
+
+    .table-tools {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 14px 18px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.42);
+      flex-wrap: wrap;
+      background: rgba(255, 255, 255, 0.22);
+    }
+
+    .tool-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .search {
+      min-height: 40px;
+      min-width: 230px;
+      border: 1px solid rgba(255, 255, 255, 0.68);
+      border-radius: 6px;
+      padding: 8px 10px;
+      background: var(--field);
+      color: var(--ink);
+      outline: none;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.82), 0 8px 18px rgba(31, 48, 58, 0.06);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+
+    .search:focus {
+      border-color: var(--teal);
+      background: rgba(255, 255, 255, 0.9);
+      box-shadow: 0 0 0 3px rgba(4, 124, 118, 0.18), 0 10px 22px rgba(31, 48, 58, 0.09);
+    }
+
+    .table-wrap {
+      overflow-x: auto;
+      max-width: 100%;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 980px;
+    }
+
+    th,
+    td {
+      padding: 10px 12px;
+      text-align: left;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.38);
+      vertical-align: top;
+      white-space: nowrap;
+    }
+
+    th {
+      background: rgba(245, 249, 250, 0.72);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      font-size: 12px;
+      color: #3c4a58;
+      text-transform: uppercase;
+      position: sticky;
+      top: 0;
+      z-index: 1;
+    }
+
+    td.notes-cell {
+      white-space: normal;
+      min-width: 180px;
+      color: var(--muted);
+    }
+
+    .row-actions {
+      display: flex;
+      gap: 8px;
+    }
+
+    .icon-btn {
+      min-width: 46px;
+      height: 34px;
+      border-radius: 6px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255, 255, 255, 0.58);
+      color: #1f2a35;
+      font-weight: 700;
+      border: 1px solid rgba(255, 255, 255, 0.62);
+      box-shadow: var(--glass-highlight);
+    }
+
+    .icon-btn:hover {
+      background: rgba(255, 255, 255, 0.8);
+    }
+
+    .empty {
+      padding: 28px 18px;
+      text-align: center;
+      color: var(--muted);
+    }
+
+    .status {
+      min-height: 20px;
+      color: var(--green);
+      font-weight: 700;
+      font-size: 13px;
+    }
+
+    .print-title {
+      display: none;
+    }
+
+    @media (max-width: 1000px) {
+      .layout {
+        grid-template-columns: 1fr;
+      }
+
+      .summary-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 620px) {
+      .topbar {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .day-control {
+        justify-content: flex-start;
+        width: 100%;
+      }
+
+      .day-control input {
+        width: 100%;
+      }
+
+      main {
+        padding: 16px 12px 26px;
+      }
+
+      .grid-2,
+      .grid-3,
+      .amount-preview,
+      .summary-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .search {
+        min-width: 0;
+        width: 100%;
+      }
+
+      .table-tools {
+        align-items: stretch;
+      }
+    }
+
+    @media print {
+      body {
+        background: #fff;
+      }
+
+      header,
+      .entry-panel,
+      .table-tools,
+      .row-actions {
+        display: none !important;
+      }
+
+      main {
+        max-width: none;
+        padding: 0;
+      }
+
+      .layout {
+        display: block;
+      }
+
+      .dashboard {
+        gap: 12px;
+      }
+
+      .summary-grid {
+        grid-template-columns: repeat(5, 1fr);
+      }
+
+      .panel,
+      .metric {
+        box-shadow: none;
+        border-color: #bbb;
+        background: #fff;
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+      }
+
+      .print-title {
+        display: block;
+        margin: 0 0 12px;
+      }
+
+      .print-title h1 {
+        margin: 0;
+        font-size: 22px;
+      }
+
+      .print-title p {
+        margin: 4px 0 0;
+      }
+
+      th {
+        position: static;
+      }
+    }
+    /* Reference-inspired dashboard redesign */
+    .icon-sprite {
+      display: none;
+    }
+
+    body.login-locked .app-shell {
+      display: none;
+    }
+
+    body:not(.login-locked) .login-screen {
+      display: none;
+    }
+
+    .login-screen {
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: 24px;
+      background:
+        radial-gradient(circle at 18% 20%, rgba(249, 115, 22, 0.22), transparent 34%),
+        radial-gradient(circle at 82% 12%, rgba(29, 95, 208, 0.20), transparent 30%),
+        linear-gradient(135deg, #05254d, #031b38 58%, #082f49);
+    }
+
+    .login-card {
+      width: min(100%, 430px);
+      padding: 26px;
+      border: 1px solid rgba(255, 255, 255, 0.20);
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.96);
+      box-shadow: 0 24px 70px rgba(0, 0, 0, 0.28);
+    }
+
+    .login-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 22px;
+    }
+
+    .login-brand h1 {
+      margin: 0;
+      font-size: 24px;
+      line-height: 1.1;
+      color: #062a55;
+    }
+
+    .login-brand p {
+      margin: 4px 0 0;
+      color: #d8a243;
+      font-weight: 800;
+    }
+
+    .login-form {
+      display: grid;
+      gap: 14px;
+    }
+
+    .login-error {
+      min-height: 18px;
+      color: #b42318;
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .login-help {
+      margin: 0;
+      color: #64748b;
+      font-size: 12px;
+      line-height: 1.5;
+    }
+
+    :root {
+      --dash-ink: #111827;
+      --dash-muted: #617084;
+      --dash-line: #dce3ee;
+      --dash-page: #f4f7fb;
+      --dash-panel: #ffffff;
+      --dash-blue: #063466;
+      --dash-blue-deep: #031b38;
+      --dash-orange: #d8a243;
+      --dash-green: #4f6f5d;
+      --dash-purple: #586174;
+      --dash-cyan: #496c80;
+      --dash-primary: #1d5fd0;
+      --dash-shadow: 0 10px 28px rgba(15, 35, 60, 0.10);
+    }
+
+    body {
+      color: var(--dash-ink);
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.72), rgba(255, 255, 255, 0.42)),
+        #eef3f8;
+      background-attachment: fixed;
+      font-size: 14px;
+    }
+
+    .app-shell {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 240px minmax(0, 1fr);
+      grid-template-rows: none;
+      background: var(--dash-page);
+    }
+
+    .sidebar {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      padding: 22px 14px;
+      display: flex;
+      flex-direction: column;
+      background: linear-gradient(180deg, var(--dash-blue), var(--dash-blue-deep));
+      color: #fff;
+      box-shadow: 8px 0 24px rgba(3, 27, 56, 0.18);
+      z-index: 10;
+    }
+
+    .sidebar-brand {
+      display: grid;
+      grid-template-columns: 54px 1fr;
+      align-items: center;
+      gap: 10px;
+      padding: 2px 6px 22px;
+    }
+
+    .sidebar-brand h1 {
+      margin: 0;
+      font-size: 21px;
+      line-height: 1.05;
+      letter-spacing: 0;
+    }
+
+    .sidebar-brand p {
+      margin: 3px 0 0;
+      color: #ffb020;
+      font-weight: 700;
+    }
+
+    .logo-mark {
+      position: relative;
+      width: 50px;
+      height: 46px;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.12);
+      overflow: hidden;
+    }
+
+    .printer-body {
+      position: absolute;
+      left: 8px;
+      top: 10px;
+      width: 34px;
+      height: 20px;
+      border-radius: 5px;
+      background: linear-gradient(180deg, #f8fafc, #cbd5e1);
+      box-shadow: inset 0 -4px 0 rgba(15, 23, 42, 0.16);
+    }
+
+    .printer-body::before {
+      content: "";
+      position: absolute;
+      left: 6px;
+      top: -7px;
+      width: 20px;
+      height: 8px;
+      border-radius: 3px 3px 0 0;
+      background: #f8fafc;
+    }
+
+    .print-strip {
+      position: absolute;
+      top: 30px;
+      width: 26px;
+      height: 6px;
+      transform: skewX(-18deg);
+    }
+
+    .strip-cyan {
+      left: 12px;
+      background: #06b6d4;
+    }
+
+    .strip-yellow {
+      left: 18px;
+      background: #facc15;
+    }
+
+    .strip-red {
+      left: 24px;
+      background: #ef4444;
+    }
+
+    .side-nav {
+      display: grid;
+      gap: 8px;
+      margin-top: 6px;
+    }
+
+    .side-nav a,
+    .sidebar-logout {
+      min-height: 44px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 0 14px;
+      border-radius: 7px;
+      color: rgba(255, 255, 255, 0.9);
+      text-decoration: none;
+      font-weight: 700;
+      background: transparent;
+      text-align: left;
+    }
+
+    .side-nav a:hover {
+      background: rgba(255, 255, 255, 0.10);
+    }
+
+    .side-nav a.active {
+      color: #fff;
+      background: rgba(255, 255, 255, 0.14);
+      box-shadow: 0 10px 18px rgba(6, 22, 39, 0.18);
+    }
+
+    .side-nav svg,
+    .sidebar-logout svg,
+    .btn svg,
+    .date-wrap svg,
+    .admin-chip svg {
+      width: 18px;
+      height: 18px;
+      flex: 0 0 auto;
+      stroke: currentColor;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      fill: none;
+    }
+
+    .sidebar-logout {
+      margin-top: auto;
+      color: #ff6b5d;
+    }
+
+    .topbar-logout {
+      min-height: 40px;
+    }
+
+    .workspace {
+      min-width: 0;
+      display: grid;
+      grid-template-rows: auto 1fr;
+    }
+
+    .workspace .topbar {
+      min-height: 74px;
+      max-width: none;
+      margin: 0;
+      padding: 14px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      color: var(--dash-ink);
+      background: #fff;
+      border-bottom: 1px solid var(--dash-line);
+      box-shadow: 0 4px 18px rgba(15, 35, 60, 0.05);
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
+    }
+
+    .topbar h2 {
+      margin: 0;
+      font-size: 22px;
+      line-height: 1.1;
+    }
+
+    .topbar p {
+      margin: 4px 0 0;
+      color: var(--dash-muted);
+      font-size: 13px;
+    }
+
+    .topbar-actions {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .day-control {
+      color: var(--dash-ink);
+      gap: 8px;
+    }
+
+    .day-control label {
+      color: var(--dash-muted);
+    }
+
+    .date-wrap {
+      min-height: 38px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 0 10px;
+      border: 1px solid var(--dash-line);
+      border-radius: 6px;
+      background: #fff;
+      color: #334155;
+    }
+
+    .day-control input {
+      min-height: auto;
+      width: 138px;
+      padding: 0;
+      border: 0;
+      border-radius: 0;
+      background: transparent;
+      color: var(--dash-ink);
+      box-shadow: none;
+      color-scheme: light;
+      outline: none;
+    }
+
+    .admin-chip {
+      min-height: 40px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 0 10px;
+      border: 1px solid var(--dash-line);
+      border-radius: 8px;
+      background: #fff;
+    }
+
+    .admin-chip span {
+      display: grid;
+      line-height: 1.15;
+    }
+
+    .admin-chip small {
+      color: var(--dash-muted);
+      font-size: 11px;
+    }
+
+    body.role-worker .dashboard-main {
+      display: none;
+    }
+
+    body.role-worker .dashboard-layout {
+      grid-template-columns: minmax(320px, 720px);
+      justify-content: center;
+    }
+
+    body.role-worker .entry-panel {
+      width: 100%;
+    }
+
+    body.role-worker .side-nav a:not([href="#new-order"]) {
+      display: none;
+    }
+
+    body.role-worker .side-nav a[href="#new-order"] {
+      color: #fff;
+      background: rgba(255, 255, 255, 0.14);
+    }
+
+    body.role-worker .admin-only {
+      display: none !important;
+    }
+
+    main {
+      width: 100%;
+      max-width: none;
+      margin: 0;
+      padding: 18px;
+    }
+
+    .dashboard-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(390px, 510px);
+      gap: 18px;
+      align-items: start;
+    }
+
+    .dashboard-main {
+      min-width: 0;
+      display: grid;
+      gap: 18px;
+    }
+
+    .panel-grid {
+      min-width: 0;
+      display: grid;
+      grid-template-columns: minmax(0, 1.45fr) minmax(300px, 0.75fr);
+      gap: 18px;
+      align-items: stretch;
+    }
+
+    .panel {
+      min-width: 0;
+      background: var(--dash-panel);
+      border: 1px solid var(--dash-line);
+      border-radius: 8px;
+      box-shadow: var(--dash-shadow);
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
+      overflow: hidden;
+    }
+
+    .panel::before {
+      display: none;
+    }
+
+    .panel-head {
+      min-height: 58px;
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--dash-line);
+      background: #fff;
+    }
+
+    .panel-head h2 {
+      font-size: 16px;
+      color: var(--dash-ink);
+    }
+
+    .panel-head .hint {
+      margin-top: 3px;
+      color: var(--dash-muted);
+      font-size: 12px;
+    }
+
+    .summary-grid {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(142px, 1fr));
+      gap: 14px;
+    }
+
+    .metric {
+      position: relative;
+      min-height: 118px;
+      padding: 16px;
+      display: grid;
+      align-content: space-between;
+      border: 0;
+      border-radius: 8px;
+      color: #fff;
+      box-shadow: 0 12px 24px rgba(15, 35, 60, 0.14);
+      overflow: hidden;
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
+    }
+
+    .metric::after {
+      content: "";
+      position: absolute;
+      right: -34px;
+      top: -28px;
+      width: 104px;
+      height: 104px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.16);
+    }
+
+    .metric span {
+      color: rgba(255, 255, 255, 0.86);
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .metric strong {
+      margin-top: 6px;
+      color: #fff;
+      font-size: 25px;
+      line-height: 1.15;
+    }
+
+    .metric a {
+      color: rgba(255, 255, 255, 0.9);
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .metric-icon {
+      position: absolute;
+      right: 16px;
+      bottom: 16px;
+      width: 28px;
+      height: 28px;
+      color: rgba(255, 255, 255, 0.88);
+      z-index: 1;
+      stroke: currentColor;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      fill: none;
+    }
+
+    .metric.card-blue {
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.78), rgba(255, 255, 255, 0.46));
+    }
+
+    .metric.card-green {
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.78), rgba(255, 255, 255, 0.46));
+    }
+
+    .metric.card-orange {
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.78), rgba(255, 255, 255, 0.46));
+    }
+
+    .metric.card-purple {
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.78), rgba(255, 255, 255, 0.46));
+    }
+
+    .metric.card-teal {
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.78), rgba(255, 255, 255, 0.46));
+    }
+
+    form {
+      padding: 15px 16px 16px;
+      gap: 12px;
+    }
+
+    .form-section-title {
+      margin-top: 2px;
+      padding-top: 4px;
+      color: #0f3b78;
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .field label,
+    .inline-label {
+      color: #26364a;
+      font-size: 11px;
+      font-weight: 800;
+    }
+
+    .field input,
+    .field select,
+    .field textarea,
+    .search {
+      min-height: 38px;
+      border: 1px solid var(--dash-line);
+      border-radius: 6px;
+      background: #fff;
+      color: var(--dash-ink);
+      box-shadow: none;
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
+    }
+
+    .field textarea {
+      min-height: 72px;
+    }
+
+    .field input:focus,
+    .field select:focus,
+    .field textarea:focus,
+    .search:focus {
+      border-color: var(--dash-primary);
+      background: #fff;
+      box-shadow: 0 0 0 3px rgba(29, 95, 208, 0.12);
+    }
+
+    .amount-preview {
+      border: 1px solid var(--dash-line);
+      background: #f8fafc;
+      box-shadow: none;
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
+    }
+
+    .amount-preview span {
+      color: var(--dash-muted);
+      font-size: 11px;
+      font-weight: 800;
+    }
+
+    .amount-preview strong {
+      color: var(--dash-ink);
+      font-size: 17px;
+    }
+
+    .btn {
+      min-height: 38px;
+      border-radius: 6px;
+      padding: 0 14px;
+      gap: 8px;
+      color: #fff;
+      background: linear-gradient(180deg, #2568d8, #174eb0);
+      box-shadow: 0 8px 16px rgba(29, 95, 208, 0.18);
+    }
+
+    .btn:hover {
+      background: linear-gradient(180deg, #1d5fc9, #153f91);
+    }
+
+    .btn.secondary {
+      border: 1px solid var(--dash-line);
+      color: #1e293b;
+      background: #fff;
+      box-shadow: none;
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
+    }
+
+    .btn.secondary:hover {
+      background: #f3f6fb;
+    }
+
+    .btn.warning {
+      background: linear-gradient(180deg, #b9842f, #91631d);
+      box-shadow: 0 8px 16px rgba(145, 99, 29, 0.18);
+    }
+
+    .table-tools {
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--dash-line);
+      background: #fbfcfe;
+    }
+
+    .tool-left {
+      gap: 8px;
+    }
+
+    .search {
+      min-width: 280px;
+      padding: 8px 10px;
+    }
+
+    table {
+      min-width: 930px;
+    }
+
+    th,
+    td {
+      padding: 10px 12px;
+      border-bottom: 1px solid #edf1f6;
+      color: #1f2937;
+      font-size: 13px;
+    }
+
+    th {
+      background: #f6f8fb;
+      color: #314155;
+      font-size: 11px;
+    }
+
+    tbody tr:hover {
+      background: #fbfdff;
+    }
+
+    td.notes-cell {
+      color: var(--dash-muted);
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 24px;
+      padding: 0 9px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .badge.completed,
+    .badge.delivered {
+      color: #116034;
+      background: #dff5e8;
+    }
+
+    .badge.pending {
+      color: #9a4a04;
+      background: #fff1dc;
+    }
+
+    .badge.default {
+      color: #334155;
+      background: #eaf0f7;
+    }
+
+    .icon-btn {
+      min-width: 42px;
+      height: 30px;
+      border: 1px solid var(--dash-line);
+      background: #fff;
+      color: #1e293b;
+      box-shadow: none;
+      font-size: 12px;
+    }
+
+    .icon-btn:hover {
+      background: #f3f6fb;
+    }
+
+    .recent-list {
+      display: grid;
+      padding: 8px 0;
+    }
+
+    .recent-row {
+      display: grid;
+      grid-template-columns: 56px 1fr auto;
+      gap: 10px;
+      align-items: center;
+      padding: 11px 14px;
+      border-bottom: 1px solid #edf1f6;
+    }
+
+    .recent-row:last-child {
+      border-bottom: 0;
+    }
+
+    .recent-row strong {
+      display: block;
+      font-size: 13px;
+    }
+
+    .recent-row small {
+      display: block;
+      margin-top: 2px;
+      color: var(--dash-muted);
+      font-size: 11px;
+    }
+
+    .recent-id {
+      color: #0f3b78;
+      font-weight: 800;
+    }
+
+    .recent-amount {
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .summary-strip {
+      display: grid;
+      grid-template-columns: repeat(6, minmax(110px, 1fr));
+      padding: 14px;
+      gap: 10px;
+    }
+
+    .summary-item {
+      min-height: 70px;
+      display: grid;
+      align-content: center;
+      gap: 4px;
+      padding: 10px 12px;
+      border: 1px solid var(--dash-line);
+      border-radius: 8px;
+      background: #fff;
+    }
+
+    .summary-item span {
+      color: var(--dash-muted);
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    .summary-item strong {
+      font-size: 17px;
+    }
+
+    .status {
+      color: #167451;
+    }
+
+    .price-note {
+      min-height: 16px;
+      color: var(--dash-muted);
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    .price-note.active {
+      color: #0f7a4a;
+    }
+
+    .empty {
+      color: var(--dash-muted);
+    }
+
+    /* Classy Chowdhari Ads glass refinement */
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Arial, sans-serif;
+      color: #172033;
+      background:
+        radial-gradient(circle at 8% 5%, rgba(255, 255, 255, 0.96), transparent 24%),
+        radial-gradient(circle at 92% 8%, rgba(195, 213, 232, 0.72), transparent 34%),
+        linear-gradient(135deg, #edf3f9 0%, #f7f9fc 48%, #e4ecf5 100%);
+    }
+
+    .app-shell {
+      background:
+        linear-gradient(135deg, rgba(255, 255, 255, 0.36), rgba(255, 255, 255, 0.10)),
+        transparent;
+    }
+
+    .login-screen {
+      background:
+        radial-gradient(circle at 25% 12%, rgba(255, 255, 255, 0.18), transparent 30%),
+        radial-gradient(circle at 78% 22%, rgba(217, 226, 238, 0.18), transparent 34%),
+        linear-gradient(135deg, #061d36, #031326 62%, #0b2948);
+    }
+
+    .login-card {
+      border: 1px solid rgba(255, 255, 255, 0.58);
+      background: rgba(255, 255, 255, 0.70);
+      box-shadow: 0 30px 90px rgba(7, 24, 43, 0.32), inset 0 1px 0 rgba(255, 255, 255, 0.88);
+      backdrop-filter: blur(28px) saturate(150%);
+      -webkit-backdrop-filter: blur(28px) saturate(150%);
+    }
+
+    .sidebar {
+      background:
+        linear-gradient(180deg, rgba(7, 35, 67, 0.92), rgba(3, 18, 35, 0.96)),
+        #061d36;
+      border-right: 1px solid rgba(255, 255, 255, 0.12);
+      box-shadow: 12px 0 42px rgba(6, 22, 39, 0.22);
+      backdrop-filter: blur(24px) saturate(135%);
+      -webkit-backdrop-filter: blur(24px) saturate(135%);
+    }
+
+    .sidebar-brand p,
+    .login-brand p {
+      color: #d8a243;
+    }
+
+    .logo-mark {
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      background: rgba(255, 255, 255, 0.10);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.20);
+    }
+
+    .side-nav a,
+    .sidebar-logout {
+      border: 1px solid transparent;
+      color: rgba(241, 246, 250, 0.88);
+    }
+
+    .side-nav a:hover {
+      background: rgba(255, 255, 255, 0.09);
+      border-color: rgba(255, 255, 255, 0.08);
+    }
+
+    .side-nav a.active,
+    body.role-worker .side-nav a[href="#new-order"] {
+      color: #fff;
+      background: rgba(255, 255, 255, 0.14);
+      border-color: rgba(255, 255, 255, 0.20);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.22), 0 14px 28px rgba(0, 0, 0, 0.16);
+    }
+
+    .workspace .topbar,
+    .panel,
+    .metric,
+    .summary-item,
+    .date-wrap,
+    .admin-chip,
+    .field input,
+    .field select,
+    .field textarea,
+    .search,
+    .btn.secondary,
+    .icon-btn,
+    .amount-preview {
+      border-color: rgba(255, 255, 255, 0.62);
+      background: rgba(255, 255, 255, 0.56);
+      box-shadow: 0 18px 54px rgba(15, 35, 60, 0.10), inset 0 1px 0 rgba(255, 255, 255, 0.78);
+      backdrop-filter: blur(22px) saturate(150%);
+      -webkit-backdrop-filter: blur(22px) saturate(150%);
+    }
+
+    .workspace .topbar {
+      background: rgba(255, 255, 255, 0.68);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.72);
+    }
+
+    .panel {
+      border-radius: 14px;
+      overflow: hidden;
+    }
+
+    .panel-head,
+    .table-tools {
+      background: rgba(255, 255, 255, 0.40);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.58);
+    }
+
+    .summary-grid {
+      gap: 12px;
+    }
+
+    .metric {
+      min-height: 112px;
+      color: #172033;
+      border: 1px solid rgba(255, 255, 255, 0.62);
+      border-radius: 14px;
+      background:
+        linear-gradient(135deg, rgba(255, 255, 255, 0.78), rgba(255, 255, 255, 0.46)) !important;
+    }
+
+    .metric::after {
+      right: -40px;
+      top: -44px;
+      width: 118px;
+      height: 118px;
+      background: rgba(8, 44, 80, 0.06);
+    }
+
+    .metric span,
+    .metric a {
+      color: #647184;
+    }
+
+    .metric strong {
+      color: #121b2d;
+      font-weight: 800;
+    }
+
+    .metric-icon {
+      color: rgba(8, 44, 80, 0.42);
+    }
+
+    .field input,
+    .field select,
+    .field textarea,
+    .search {
+      background: rgba(255, 255, 255, 0.58);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.78), 0 10px 28px rgba(15, 35, 60, 0.06);
+    }
+
+    .field input:focus,
+    .field select:focus,
+    .field textarea:focus,
+    .search:focus {
+      border-color: rgba(6, 52, 102, 0.46);
+      background: rgba(255, 255, 255, 0.82);
+      box-shadow: 0 0 0 4px rgba(6, 52, 102, 0.10), inset 0 1px 0 rgba(255, 255, 255, 0.86);
+    }
+
+    .btn {
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      background: linear-gradient(180deg, #0b3b70, #06284e);
+      box-shadow: 0 14px 26px rgba(6, 40, 78, 0.20), inset 0 1px 0 rgba(255, 255, 255, 0.18);
+    }
+
+    .btn:hover {
+      background: linear-gradient(180deg, #0a345f, #05213f);
+    }
+
+    .btn.warning {
+      background: linear-gradient(180deg, #b9842f, #91631d);
+      box-shadow: 0 14px 26px rgba(145, 99, 29, 0.18), inset 0 1px 0 rgba(255, 255, 255, 0.20);
+    }
+
+    .btn.secondary,
+    .icon-btn {
+      color: #172033;
+      background: rgba(255, 255, 255, 0.56);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.78), 0 10px 26px rgba(15, 35, 60, 0.06);
+    }
+
+    .btn.secondary:hover,
+    .icon-btn:hover {
+      background: rgba(255, 255, 255, 0.78);
+    }
+
+    th {
+      background: rgba(255, 255, 255, 0.52);
+      color: #536175;
+    }
+
+    tbody tr:hover {
+      background: rgba(255, 255, 255, 0.36);
+    }
+
+    .badge.completed,
+    .badge.delivered {
+      color: #1b5b3c;
+      background: rgba(218, 242, 228, 0.72);
+    }
+
+    .badge.pending {
+      color: #805415;
+      background: rgba(246, 231, 205, 0.72);
+    }
+
+    .price-note.active,
+    .status {
+      color: #1b5b3c;
+    }
+
+    @media (max-width: 1320px) {
+      .dashboard-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .entry-panel {
+        order: -1;
+      }
+    }
+
+    @media (max-width: 1100px) {
+      .app-shell {
+        display: block;
+      }
+
+      .sidebar {
+        position: static;
+        height: auto;
+        padding: 14px;
+      }
+
+      .sidebar-brand {
+        padding-bottom: 12px;
+      }
+
+      .side-nav {
+        grid-auto-flow: column;
+        grid-auto-columns: max-content;
+        overflow-x: auto;
+        padding-bottom: 2px;
+      }
+
+      .sidebar-logout {
+        display: none;
+      }
+
+      .workspace .topbar {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .topbar-actions {
+        width: 100%;
+        justify-content: space-between;
+      }
+
+      .summary-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .panel-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 620px) {
+      main {
+        padding: 12px;
+      }
+
+      .workspace .topbar {
+        padding: 14px;
+      }
+
+      .topbar-actions,
+      .day-control {
+        align-items: stretch;
+        width: 100%;
+      }
+
+      .day-control,
+      .date-wrap,
+      .admin-chip {
+        width: 100%;
+      }
+
+      .day-control input {
+        width: 100%;
+      }
+
+      .grid-2,
+      .grid-3,
+      .amount-preview,
+      .summary-grid,
+      .summary-strip {
+        grid-template-columns: 1fr;
+      }
+
+      .search {
+        min-width: 0;
+        width: 100%;
+      }
+
+      .table-tools,
+      .tool-left {
+        align-items: stretch;
+      }
+    }
+
+    @media print {
+      body,
+      .app-shell {
+        background: #fff;
+      }
+
+      .sidebar,
+      .workspace .topbar,
+      .entry-panel,
+      .table-tools,
+      .recent-panel,
+      .row-actions {
+        display: none !important;
+      }
+
+      .app-shell,
+      .dashboard-layout,
+      .dashboard-main,
+      .panel-grid {
+        display: block;
+      }
+
+      main {
+        padding: 0;
+      }
+
+      .summary-grid,
+      .summary-strip {
+        grid-template-columns: repeat(5, 1fr);
+      }
+
+      .panel,
+      .metric {
+        box-shadow: none;
+        border-color: #bbb;
+      }
+
+      .metric {
+        color: #111;
+        background: #fff !important;
+      }
+
+      .metric span,
+      .metric strong,
+      .metric a {
+        color: #111;
+      }
+
+      .print-title {
+        display: block;
+        margin: 0 0 12px;
+      }
+
+      th {
+        position: static;
+      }
+    }
+  </style>
+</head>
+<body class="login-locked">
+  <svg class="icon-sprite" aria-hidden="true" focusable="false">
+    <symbol id="i-dashboard" viewBox="0 0 24 24"><path d="M4 13h7V4H4v9Zm0 7h7v-5H4v5Zm9 0h7v-9h-7v9Zm0-16v5h7V4h-7Z"/></symbol>
+    <symbol id="i-order" viewBox="0 0 24 24"><path d="M7 4h10l2 3v13H5V7l2-3Zm0 3h10M9 11h6M9 15h6"/></symbol>
+    <symbol id="i-list" viewBox="0 0 24 24"><path d="M8 6h12M8 12h12M8 18h12M4 6h.01M4 12h.01M4 18h.01"/></symbol>
+    <symbol id="i-users" viewBox="0 0 24 24"><path d="M16 11a4 4 0 1 0-8 0 4 4 0 0 0 8 0ZM4 21a8 8 0 0 1 16 0M18 8a3 3 0 0 1 2.8 4"/></symbol>
+    <symbol id="i-report" viewBox="0 0 24 24"><path d="M5 20V4h14v16H5Zm4-5v2m3-6v6m3-10v10M8 8h3"/></symbol>
+    <symbol id="i-settings" viewBox="0 0 24 24"><path d="M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8Zm0-5v3m0 12v3M4.2 4.2l2.1 2.1m11.4 11.4 2.1 2.1M3 12h3m12 0h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/></symbol>
+    <symbol id="i-calendar" viewBox="0 0 24 24"><path d="M7 3v4m10-4v4M4 8h16M5 5h14v15H5V5Zm3 7h3m3 0h3m-9 4h3"/></symbol>
+    <symbol id="i-user" viewBox="0 0 24 24"><path d="M16 9a4 4 0 1 1-8 0 4 4 0 0 1 8 0ZM4 21a8 8 0 0 1 16 0"/></symbol>
+    <symbol id="i-save" viewBox="0 0 24 24"><path d="M5 4h12l2 2v14H5V4Zm3 0v6h8V4M8 20v-6h8v6"/></symbol>
+    <symbol id="i-reset" viewBox="0 0 24 24"><path d="M4 12a8 8 0 1 0 2.3-5.7L4 8.6M4 4v4.6h4.6"/></symbol>
+    <symbol id="i-download" viewBox="0 0 24 24"><path d="M12 4v10m0 0 4-4m-4 4-4-4M5 20h14"/></symbol>
+    <symbol id="i-upload" viewBox="0 0 24 24"><path d="M12 20V10m0 0 4 4m-4-4-4 4M5 4h14"/></symbol>
+    <symbol id="i-print" viewBox="0 0 24 24"><path d="M7 8V4h10v4M7 17H5v-7h14v7h-2M7 14h10v6H7v-6Z"/></symbol>
+    <symbol id="i-logout" viewBox="0 0 24 24"><path d="M10 5H5v14h5M14 8l4 4-4 4M8 12h10"/></symbol>
+  </svg>
+
+  <section class="login-screen" aria-labelledby="loginTitle">
+    <div class="login-card">
+      <div class="login-brand">
+        <div class="logo-mark" aria-hidden="true">
+          <div class="printer-body"></div>
+          <span class="print-strip strip-cyan"></span>
+          <span class="print-strip strip-yellow"></span>
+          <span class="print-strip strip-red"></span>
+        </div>
+        <div>
+          <h1 id="loginTitle">CHOWDHARI ADS</h1>
+          <p>Secure Login</p>
+        </div>
+      </div>
+
+      <form class="login-form" id="loginForm">
+        <div class="field">
+          <label for="loginRole">Login type</label>
+          <select id="loginRole">
+            <option value="admin">Admin</option>
+            <option value="worker">Worker</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="loginUser">Username</label>
+          <input id="loginUser" type="text" autocomplete="username" required>
+        </div>
+        <div class="field">
+          <label for="loginPass">Password</label>
+          <input id="loginPass" type="password" autocomplete="current-password" required>
+        </div>
+        <button class="btn" type="submit">Login</button>
+        <div class="login-error" id="loginError"></div>
+        <p class="login-help">Default admin: admin / admin123. Default worker: worker / worker123.</p>
+      </form>
+    </div>
+  </section>
+
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="sidebar-brand">
+        <div class="logo-mark" aria-hidden="true">
+          <div class="printer-body"></div>
+          <span class="print-strip strip-cyan"></span>
+          <span class="print-strip strip-yellow"></span>
+          <span class="print-strip strip-red"></span>
+        </div>
+        <div>
+          <h1>CHOWDHARI ADS</h1>
+          <p>Reliable Services</p>
+        </div>
+      </div>
+
+      <nav class="side-nav" aria-label="Main">
+        <a class="active" href="#dashboard"><svg><use href="#i-dashboard"></use></svg>Dashboard</a>
+        <a href="#new-order"><svg><use href="#i-order"></use></svg>New Order</a>
+        <a href="#orders"><svg><use href="#i-list"></use></svg>Orders</a>
+        <a href="#customers"><svg><use href="#i-users"></use></svg>Customers</a>
+        <a href="#reports"><svg><use href="#i-report"></use></svg>Reports</a>
+        <a href="#settings"><svg><use href="#i-settings"></use></svg>Settings</a>
+      </nav>
+
+      <button class="sidebar-logout" id="sidebarLogout" type="button">
+        <svg><use href="#i-logout"></use></svg>
+        Logout
+      </button>
+    </aside>
+
+    <div class="workspace">
+      <header class="topbar">
+        <div>
+          <h2>Dashboard</h2>
+          <p>Daily print order control</p>
+        </div>
+        <div class="topbar-actions">
+          <div class="day-control">
+            <label for="selectedDate">Report date</label>
+            <span class="date-wrap">
+              <svg><use href="#i-calendar"></use></svg>
+              <input id="selectedDate" type="date">
+            </span>
+            <button class="btn secondary" id="todayBtn" type="button">Today</button>
+          </div>
+          <div class="admin-chip" id="roleChip">
+            <svg><use href="#i-user"></use></svg>
+            <span><strong>Admin</strong><small>Administrator</small></span>
+          </div>
+          <button class="btn secondary topbar-logout" id="topbarLogout" type="button">
+            <svg><use href="#i-logout"></use></svg>Logout
+          </button>
+        </div>
+      </header>
+
+      <main>
+        <div class="print-title">
+          <h1>Chowdhari Ads - Daily Report</h1>
+          <p id="printDate"></p>
+        </div>
+
+        <div class="dashboard-layout" id="dashboard">
+          <section class="dashboard-main">
+            <div class="summary-grid" id="summaryGrid"></div>
+
+            <div class="panel-grid">
+              <section class="panel jobs-panel" id="orders">
+                <div class="panel-head">
+                  <div>
+                    <h2>Today's Jobs</h2>
+                    <p class="hint">Orders saved for the selected date</p>
+                  </div>
+                </div>
+                <div class="table-tools">
+                  <div class="tool-left">
+                    <input class="search" id="searchInput" type="search" placeholder="Search customer, material, notes">
+                    <button class="btn secondary admin-only" id="exportBtn" type="button"><svg><use href="#i-download"></use></svg>Export CSV</button>
+                    <button class="btn secondary admin-only" id="backupBtn" type="button"><svg><use href="#i-download"></use></svg>Backup</button>
+                    <label class="btn secondary admin-only" for="restoreInput"><svg><use href="#i-upload"></use></svg>Restore</label>
+                    <input id="restoreInput" type="file" accept="application/json" hidden>
+                  </div>
+                  <button class="btn warning admin-only" id="printBtn" type="button"><svg><use href="#i-print"></use></svg>Print Report</button>
+                </div>
+                <div class="table-wrap" id="tableWrap"></div>
+              </section>
+
+              <section class="panel recent-panel">
+                <div class="panel-head">
+                  <div>
+                    <h2>Recent Orders</h2>
+                    <p class="hint">Latest saved jobs</p>
+                  </div>
+                </div>
+                <div class="recent-list" id="recentOrders"></div>
+              </section>
+            </div>
+
+            <section class="panel report-panel" id="reports">
+              <div class="panel-head">
+                <div>
+                  <h2>Daily Summary</h2>
+                  <p class="hint">Closing figures for the selected date</p>
+                </div>
+              </div>
+              <div class="summary-strip" id="dailySummary"></div>
+            </section>
+          </section>
+
+          <section class="panel entry-panel" id="new-order">
+            <div class="panel-head">
+              <div>
+                <h2 id="formTitle">New Order</h2>
+                <p class="hint">Area and amount calculate automatically.</p>
+              </div>
+            </div>
+
+            <form id="jobForm">
+              <input id="editId" type="hidden">
+
+              <div class="form-section-title">Customer Information</div>
+              <div class="grid-2">
+                <div class="field">
+                  <label for="jobDate">Date</label>
+                  <input id="jobDate" type="date" required>
+                </div>
+                <div class="field">
+                  <label for="customer">Customer</label>
+                  <input id="customer" type="text" placeholder="Walk-in / name">
+                </div>
+              </div>
+
+              <div class="form-section-title">Print Details</div>
+              <div class="field">
+                <label for="material">Print quality / material</label>
+                <input id="material" list="materialList" type="text" placeholder="Star Flex, vinyl, backlit..." required>
+                <datalist id="materialList">
+                  <option value="Normal Flex"></option>
+                  <option value="Star Flex"></option>
+                  <option value="Vinyl"></option>
+                  <option value="One Way Vision"></option>
+                  <option value="Backlit"></option>
+                </datalist>
+              </div>
+
+              <div class="grid-3">
+                <div class="field">
+                  <label for="width">Width</label>
+                  <input id="width" type="number" min="0" step="0.01" placeholder="0" required>
+                </div>
+                <div class="field">
+                  <label for="height">Height</label>
+                  <input id="height" type="number" min="0" step="0.01" placeholder="0" required>
+                </div>
+                <div class="field">
+                  <label for="unit">Unit</label>
+                  <select id="unit">
+                    <option value="ft">Feet</option>
+                    <option value="in">Inches</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="grid-3">
+                <div class="field">
+                  <label for="quantity">Quantity</label>
+                  <input id="quantity" type="number" min="1" step="1" value="1" required>
+                </div>
+                <div class="field">
+                  <label for="rate">Rate per sq ft</label>
+                  <input id="rate" type="number" min="0" step="0.01" placeholder="0">
+                  <small class="price-note" id="priceNote"></small>
+                </div>
+                <div class="field">
+                  <label for="extra">Extra charges</label>
+                  <input id="extra" type="number" min="0" step="0.01" value="0">
+                </div>
+              </div>
+
+              <div class="form-section-title">Pricing and Status</div>
+              <div class="grid-2">
+                <div class="field">
+                  <label for="discount">Discount</label>
+                  <input id="discount" type="number" min="0" step="0.01" value="0">
+                </div>
+                <div class="field">
+                  <label for="paid">Amount paid</label>
+                  <input id="paid" type="number" min="0" step="0.01" value="0">
+                </div>
+              </div>
+
+              <div class="grid-2">
+                <div class="field">
+                  <label for="paymentMode">Payment mode</label>
+                  <select id="paymentMode">
+                    <option value="Cash">Cash</option>
+                    <option value="UPI">UPI</option>
+                    <option value="Card">Card</option>
+                    <option value="Bank transfer">Bank transfer</option>
+                    <option value="Credit">Credit</option>
+                  </select>
+                </div>
+                <div class="field">
+                  <label for="orderStatus">Status</label>
+                  <select id="orderStatus">
+                    <option value="Completed">Completed</option>
+                    <option value="Pending">Pending</option>
+                    <option value="Delivered">Delivered</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="field">
+                <label for="notes">Remarks</label>
+                <textarea id="notes" placeholder="Design, delivery, customer phone, etc."></textarea>
+              </div>
+
+              <div class="amount-preview" aria-live="polite">
+                <div>
+                  <span>Total sq ft</span>
+                  <strong id="previewArea">0.00</strong>
+                </div>
+                <div>
+                  <span>Total amount</span>
+                  <strong id="previewAmount">Rs. 0.00</strong>
+                </div>
+                <div>
+                  <span>Balance due</span>
+                  <strong id="previewBalance">Rs. 0.00</strong>
+                </div>
+              </div>
+
+              <div class="actions">
+                <button class="btn" type="submit" id="saveBtn"><svg><use href="#i-save"></use></svg>Save Order</button>
+                <button class="btn secondary" type="button" id="clearBtn"><svg><use href="#i-reset"></use></svg>Reset</button>
+              </div>
+              <div class="status" id="statusMessage"></div>
+            </form>
+          </section>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <script>
+    const STORAGE_KEY = "chowdhari_ads_jobs_v1";
+    const SESSION_KEY = "chowdhari_ads_session_v1";
+    const USERS = {
+      admin: { username: "admin", password: "admin123", label: "Admin", subtitle: "Administrator" },
+      worker: { username: "worker", password: "worker123", label: "Worker", subtitle: "Create orders only" }
+    };
+
+    const fields = {
+      selectedDate: document.getElementById("selectedDate"),
+      jobDate: document.getElementById("jobDate"),
+      editId: document.getElementById("editId"),
+      customer: document.getElementById("customer"),
+      material: document.getElementById("material"),
+      width: document.getElementById("width"),
+      height: document.getElementById("height"),
+      unit: document.getElementById("unit"),
+      quantity: document.getElementById("quantity"),
+      rate: document.getElementById("rate"),
+      extra: document.getElementById("extra"),
+      discount: document.getElementById("discount"),
+      paid: document.getElementById("paid"),
+      paymentMode: document.getElementById("paymentMode"),
+      orderStatus: document.getElementById("orderStatus"),
+      notes: document.getElementById("notes")
+    };
+
+    const loginForm = document.getElementById("loginForm");
+    const loginRole = document.getElementById("loginRole");
+    const loginUser = document.getElementById("loginUser");
+    const loginPass = document.getElementById("loginPass");
+    const loginError = document.getElementById("loginError");
+    const form = document.getElementById("jobForm");
+    const formTitle = document.getElementById("formTitle");
+    const saveBtn = document.getElementById("saveBtn");
+    const clearBtn = document.getElementById("clearBtn");
+    const sidebarLogout = document.getElementById("sidebarLogout");
+    const topbarLogout = document.getElementById("topbarLogout");
+    const roleChip = document.getElementById("roleChip");
+    const todayBtn = document.getElementById("todayBtn");
+    const printBtn = document.getElementById("printBtn");
+    const exportBtn = document.getElementById("exportBtn");
+    const backupBtn = document.getElementById("backupBtn");
+    const restoreInput = document.getElementById("restoreInput");
+    const searchInput = document.getElementById("searchInput");
+    const tableWrap = document.getElementById("tableWrap");
+    const summaryGrid = document.getElementById("summaryGrid");
+    const dailySummary = document.getElementById("dailySummary");
+    const recentOrders = document.getElementById("recentOrders");
+    const statusMessage = document.getElementById("statusMessage");
+    const printDate = document.getElementById("printDate");
+    const previewArea = document.getElementById("previewArea");
+    const previewAmount = document.getElementById("previewAmount");
+    const previewBalance = document.getElementById("previewBalance");
+    const priceNote = document.getElementById("priceNote");
+
+    let jobs = loadJobs();
+    let currentUser = loadSession();
+
+    function isAdmin() {
+      return currentUser && currentUser.role === "admin";
+    }
+
+    function loadSession() {
+      try {
+        const session = JSON.parse(sessionStorage.getItem(SESSION_KEY) || "null");
+        if (session && USERS[session.role]) return session;
+      } catch {
+      }
+      return null;
+    }
+
+    function saveSession(role) {
+      currentUser = { role };
+      sessionStorage.setItem(SESSION_KEY, JSON.stringify(currentUser));
+      applyAuthState();
+    }
+
+    function logout() {
+      currentUser = null;
+      sessionStorage.removeItem(SESSION_KEY);
+      fields.editId.value = "";
+      clearForm();
+      applyAuthState();
+      loginPass.value = "";
+      loginUser.focus();
+    }
+
+    function applyAuthState() {
+      document.body.classList.toggle("login-locked", !currentUser);
+      document.body.classList.toggle("role-admin", Boolean(currentUser && currentUser.role === "admin"));
+      document.body.classList.toggle("role-worker", Boolean(currentUser && currentUser.role === "worker"));
+      if (!currentUser) return;
+
+      const user = USERS[currentUser.role];
+      roleChip.innerHTML = `
+        <svg><use href="#i-user"></use></svg>
+        <span><strong>${user.label}</strong><small>${user.subtitle}</small></span>
+      `;
+      render();
+    }
+
+    const fixedSizePrices = {
+      "2x3": 300,
+      "3x4": 480,
+      "3x5": 500,
+      "3x6": 600,
+      "4x6": 700,
+      "4x8": 850,
+      "6x8": 950,
+      "8x10": 1300,
+      "8x12": 1700,
+      "10x12": 2100,
+      "10x15": 2700,
+      "10x20": 3400
+    };
+
+    function todayISO() {
+      return new Date().toISOString().slice(0, 10);
+    }
+
+    function money(value) {
+      return "Rs. " + Number(value || 0).toFixed(2);
+    }
+
+    function number(value) {
+      return Number(value || 0);
+    }
+
+    function sizeKey(width, height) {
+      const sides = [number(width), number(height)].sort((a, b) => a - b);
+      return sides.map(side => Number.isInteger(side) ? String(side) : String(side).replace(/\.?0+$/, "")).join("x");
+    }
+
+    function fixedSizePrice(values) {
+      if (String(values.material || "").trim().toLowerCase() !== "normal flex") return null;
+      if (values.unit !== "ft") return null;
+      const width = number(values.width);
+      const height = number(values.height);
+      if (!width || !height) return null;
+      const key = sizeKey(width, height);
+      return fixedSizePrices[key] || null;
+    }
+
+    function makeId() {
+      if (window.crypto && crypto.randomUUID) return crypto.randomUUID();
+      return String(Date.now()) + Math.random().toString(16).slice(2);
+    }
+
+    function loadJobs() {
+      try {
+        return JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]");
+      } catch {
+        return [];
+      }
+    }
+
+    function saveJobs() {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(jobs));
+    }
+
+    function setSaveButton(editing) {
+      formTitle.textContent = editing ? "Edit Order" : "New Order";
+      saveBtn.innerHTML = editing
+        ? '<svg><use href="#i-save"></use></svg>Update Order'
+        : '<svg><use href="#i-save"></use></svg>Save Order';
+    }
+
+    function calculate(values) {
+      const width = number(values.width);
+      const height = number(values.height);
+      const quantity = Math.max(1, number(values.quantity));
+      const rate = number(values.rate);
+      const extra = number(values.extra);
+      const discount = number(values.discount);
+      const paid = number(values.paid);
+      const onePieceArea = values.unit === "in" ? (width * height) / 144 : width * height;
+      const area = onePieceArea * quantity;
+      const fixedPrice = fixedSizePrice(values);
+      const baseAmount = fixedPrice ? fixedPrice * quantity : area * rate;
+      const amount = Math.max(0, baseAmount + extra - discount);
+      const balance = Math.max(0, amount - paid);
+      return { area, amount, balance, fixedPrice };
+    }
+
+    function formValues() {
+      return {
+        id: fields.editId.value || makeId(),
+        date: fields.jobDate.value,
+        customer: fields.customer.value.trim(),
+        material: fields.material.value.trim(),
+        width: number(fields.width.value),
+        height: number(fields.height.value),
+        unit: fields.unit.value,
+        quantity: Math.max(1, number(fields.quantity.value)),
+        rate: number(fields.rate.value),
+        extra: number(fields.extra.value),
+        discount: number(fields.discount.value),
+        paid: number(fields.paid.value),
+        paymentMode: fields.paymentMode.value,
+        orderStatus: fields.orderStatus.value,
+        notes: fields.notes.value.trim(),
+        updatedAt: new Date().toISOString()
+      };
+    }
+
+    function updatePreview() {
+      const values = formValues();
+      const totals = calculate(values);
+      previewArea.textContent = totals.area.toFixed(2);
+      previewAmount.textContent = money(totals.amount);
+      previewBalance.textContent = money(totals.balance);
+      if (totals.fixedPrice) {
+        priceNote.textContent = "Normal Flex fixed size price applied: " + money(totals.fixedPrice) + " each";
+        priceNote.classList.add("active");
+      } else {
+        priceNote.textContent = "Fixed prices apply only to Normal Flex; otherwise use rate per sq ft.";
+        priceNote.classList.remove("active");
+      }
+    }
+
+    function clearForm() {
+      form.reset();
+      fields.editId.value = "";
+      fields.jobDate.value = fields.selectedDate.value;
+      fields.quantity.value = 1;
+      fields.extra.value = 0;
+      fields.discount.value = 0;
+      fields.paid.value = 0;
+      setSaveButton(false);
+      updatePreview();
+      fields.customer.focus();
+    }
+
+    function selectedJobs() {
+      const date = fields.selectedDate.value;
+      const query = searchInput.value.trim().toLowerCase();
+      return jobs
+        .filter(job => job.date === date)
+        .filter(job => {
+          if (!query) return true;
+          return [
+            job.customer,
+            job.material,
+            job.paymentMode,
+            job.orderStatus,
+            job.notes
+          ].join(" ").toLowerCase().includes(query);
+        })
+        .sort((a, b) => String(b.updatedAt).localeCompare(String(a.updatedAt)));
+    }
+
+    function summarize(rows) {
+      return rows.reduce((sum, job) => {
+        const totals = calculate(job);
+        const status = String(job.orderStatus || "").toLowerCase();
+        sum.jobs += 1;
+        sum.quantity += number(job.quantity);
+        sum.area += totals.area;
+        sum.amount += totals.amount;
+        sum.paid += number(job.paid);
+        sum.balance += totals.balance;
+        if (status === "completed" || status === "delivered") sum.completed += 1;
+        if (status === "pending") sum.pending += 1;
+        return sum;
+      }, { jobs: 0, quantity: 0, area: 0, amount: 0, paid: 0, balance: 0, completed: 0, pending: 0 });
+    }
+
+    function renderSummary(rows) {
+      const sum = summarize(rows);
+      const metrics = [
+        ["Today's Orders", sum.jobs, "card-blue", "i-order"],
+        ["Revenue Today", money(sum.amount), "card-green", "i-report"],
+        ["Pending Payments", money(sum.balance), "card-orange", "i-calendar"],
+        ["Paid Today", money(sum.paid), "card-purple", "i-dashboard"],
+        ["Total Prints", sum.quantity, "card-teal", "i-list"]
+      ];
+      summaryGrid.innerHTML = metrics.map(([label, value, className, icon]) => `
+        <div class="metric ${className}">
+          <div>
+            <span>${label}</span>
+            <strong>${value}</strong>
+          </div>
+          <a href="#orders">View Details -></a>
+          <svg class="metric-icon"><use href="#${icon}"></use></svg>
+        </div>
+      `).join("");
+
+      dailySummary.innerHTML = [
+        ["Total Revenue", money(sum.amount)],
+        ["Amount Paid", money(sum.paid)],
+        ["Balance Due", money(sum.balance)],
+        ["Total Sq Ft", sum.area.toFixed(2)],
+        ["Completed", sum.completed],
+        ["Pending", sum.pending]
+      ].map(([label, value]) => `
+        <div class="summary-item">
+          <span>${label}</span>
+          <strong>${value}</strong>
+        </div>
+      `).join("");
+    }
+
+    function escapeHTML(text) {
+      return String(text ?? "").replace(/[&<>"']/g, char => ({
+        "&": "&amp;",
+        "<": "&lt;",
+        ">": "&gt;",
+        '"': "&quot;",
+        "'": "&#039;"
+      }[char]));
+    }
+
+    function statusClass(status) {
+      const value = String(status || "").toLowerCase();
+      if (value === "completed") return "completed";
+      if (value === "delivered") return "delivered";
+      if (value === "pending") return "pending";
+      return "default";
+    }
+
+    function shortId(job) {
+      const id = String(job.id || "").replace(/-/g, "");
+      return "#" + (id.slice(-4) || "0000").toUpperCase();
+    }
+
+    function renderTable(rows) {
+      if (!rows.length) {
+        tableWrap.innerHTML = '<div class="empty">No print jobs saved for this date.</div>';
+        return;
+      }
+
+      tableWrap.innerHTML = `
+        <table>
+          <thead>
+            <tr>
+              <th>Customer</th>
+              <th>Quality</th>
+              <th>Size</th>
+              <th>Qty</th>
+              <th>Sq ft</th>
+              <th>Rate / Price</th>
+              <th>Amount</th>
+              <th>Paid</th>
+              <th>Due</th>
+              <th>Mode</th>
+              <th>Status</th>
+              <th>Notes</th>
+              ${isAdmin() ? "<th>Actions</th>" : ""}
+            </tr>
+          </thead>
+          <tbody>
+            ${rows.map(job => {
+              const totals = calculate(job);
+              return `
+                <tr>
+                  <td>${escapeHTML(job.customer || "Walk-in")}</td>
+                  <td>${escapeHTML(job.material)}</td>
+                  <td>${job.width} x ${job.height} ${job.unit}</td>
+                  <td>${job.quantity}</td>
+                  <td>${totals.area.toFixed(2)}</td>
+                  <td>${totals.fixedPrice ? money(totals.fixedPrice) + " fixed" : money(job.rate)}</td>
+                  <td>${money(totals.amount)}</td>
+                  <td>${money(job.paid)}</td>
+                  <td>${money(totals.balance)}</td>
+                  <td>${escapeHTML(job.paymentMode)}</td>
+                  <td><span class="badge ${statusClass(job.orderStatus)}">${escapeHTML(job.orderStatus)}</span></td>
+                  <td class="notes-cell">${escapeHTML(job.notes)}</td>
+                  ${isAdmin() ? `
+                    <td>
+                      <div class="row-actions">
+                        <button class="icon-btn" title="Edit" data-action="edit" data-id="${job.id}">Edit</button>
+                        <button class="icon-btn" title="Delete" data-action="delete" data-id="${job.id}">Del</button>
+                      </div>
+                    </td>
+                  ` : ""}
+                </tr>
+              `;
+            }).join("")}
+          </tbody>
+        </table>
+      `;
+    }
+
+    function renderRecent() {
+      const recent = jobs
+        .slice()
+        .sort((a, b) => String(b.updatedAt).localeCompare(String(a.updatedAt)))
+        .slice(0, 6);
+
+      if (!recent.length) {
+        recentOrders.innerHTML = '<div class="empty">No recent orders yet.</div>';
+        return;
+      }
+
+      recentOrders.innerHTML = recent.map(job => {
+        const totals = calculate(job);
+        return `
+          <div class="recent-row">
+            <div class="recent-id">${shortId(job)}</div>
+            <div>
+              <strong>${escapeHTML(job.customer || "Walk-in")}</strong>
+              <small>${escapeHTML(job.material)} - ${escapeHTML(job.date)}</small>
+            </div>
+            <div class="recent-amount">${money(totals.amount)}</div>
+          </div>
+        `;
+      }).join("");
+    }
+
+    function render() {
+      const rows = selectedJobs();
+      printDate.textContent = "Date: " + fields.selectedDate.value;
+      renderSummary(rows);
+      renderTable(rows);
+      renderRecent();
+    }
+
+    function showStatus(message) {
+      statusMessage.textContent = message;
+      window.clearTimeout(showStatus.timer);
+      showStatus.timer = window.setTimeout(() => {
+        statusMessage.textContent = "";
+      }, 2200);
+    }
+
+    form.addEventListener("input", updatePreview);
+
+    form.addEventListener("submit", event => {
+      event.preventDefault();
+      const values = formValues();
+      const totals = calculate(values);
+      if (!values.date || !values.material || !values.width || !values.height || (!totals.fixedPrice && !values.rate)) {
+        showStatus("Please fill date, material, size, and rate unless Normal Flex fixed price matches.");
+        return;
+      }
+
+      const existingIndex = jobs.findIndex(job => job.id === values.id);
+      if (existingIndex >= 0 && !isAdmin()) {
+        showStatus("Worker login can add new orders only.");
+        return;
+      }
+      if (existingIndex >= 0) {
+        jobs[existingIndex] = values;
+        showStatus("Job updated.");
+      } else {
+        jobs.push(values);
+        showStatus("Job saved.");
+      }
+
+      saveJobs();
+      fields.selectedDate.value = values.date;
+      clearForm();
+      render();
+    });
+
+    clearBtn.addEventListener("click", clearForm);
+
+    todayBtn.addEventListener("click", () => {
+      fields.selectedDate.value = todayISO();
+      fields.jobDate.value = fields.selectedDate.value;
+      render();
+    });
+
+    fields.selectedDate.addEventListener("change", () => {
+      fields.jobDate.value = fields.selectedDate.value;
+      clearForm();
+      render();
+    });
+
+    searchInput.addEventListener("input", render);
+
+    tableWrap.addEventListener("click", event => {
+      if (!isAdmin()) {
+        showStatus("Worker login cannot edit or delete orders.");
+        return;
+      }
+      const button = event.target.closest("button[data-action]");
+      if (!button) return;
+      const id = button.dataset.id;
+      const job = jobs.find(item => item.id === id);
+      if (!job) return;
+
+      if (button.dataset.action === "delete") {
+        const label = job.customer || job.material || "this job";
+        if (!confirm("Delete " + label + "?")) return;
+        jobs = jobs.filter(item => item.id !== id);
+        saveJobs();
+        render();
+        showStatus("Job deleted.");
+        return;
+      }
+
+      fields.editId.value = job.id;
+      fields.jobDate.value = job.date;
+      fields.customer.value = job.customer || "";
+      fields.material.value = job.material || "";
+      fields.width.value = job.width || "";
+      fields.height.value = job.height || "";
+      fields.unit.value = job.unit || "ft";
+      fields.quantity.value = job.quantity || 1;
+      fields.rate.value = job.rate || "";
+      fields.extra.value = job.extra || 0;
+      fields.discount.value = job.discount || 0;
+      fields.paid.value = job.paid || 0;
+      fields.paymentMode.value = job.paymentMode || "Cash";
+      fields.orderStatus.value = job.orderStatus || "Completed";
+      fields.notes.value = job.notes || "";
+      setSaveButton(true);
+      updatePreview();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+
+    exportBtn.addEventListener("click", () => {
+      if (!isAdmin()) {
+        showStatus("Admin login required for export.");
+        return;
+      }
+      const rows = selectedJobs();
+      const headers = ["Date", "Customer", "Quality", "Width", "Height", "Unit", "Quantity", "Sq ft", "Rate", "Extra", "Discount", "Amount", "Paid", "Due", "Payment mode", "Status", "Notes"];
+      const csvRows = [headers];
+      rows.forEach(job => {
+        const totals = calculate(job);
+        csvRows.push([
+          job.date,
+          job.customer || "Walk-in",
+          job.material,
+          job.width,
+          job.height,
+          job.unit,
+          job.quantity,
+          totals.area.toFixed(2),
+          totals.fixedPrice ? money(totals.fixedPrice) + " fixed" : job.rate,
+          job.extra,
+          job.discount,
+          totals.amount.toFixed(2),
+          job.paid,
+          totals.balance.toFixed(2),
+          job.paymentMode,
+          job.orderStatus,
+          job.notes
+        ]);
+      });
+      downloadFile("chowdhari-ads-" + fields.selectedDate.value + ".csv", toCSV(csvRows), "text/csv");
+    });
+
+    backupBtn.addEventListener("click", () => {
+      if (!isAdmin()) {
+        showStatus("Admin login required for backup.");
+        return;
+      }
+      downloadFile("chowdhari-ads-backup.json", JSON.stringify(jobs, null, 2), "application/json");
+    });
+
+    restoreInput.addEventListener("change", () => {
+      if (!isAdmin()) {
+        showStatus("Admin login required for restore.");
+        restoreInput.value = "";
+        return;
+      }
+      const file = restoreInput.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = () => {
+        try {
+          const restored = JSON.parse(reader.result);
+          if (!Array.isArray(restored)) throw new Error("Invalid backup");
+          jobs = restored;
+          saveJobs();
+          render();
+          showStatus("Backup restored.");
+        } catch {
+          showStatus("Could not restore this file.");
+        }
+      };
+      reader.readAsText(file);
+      restoreInput.value = "";
+    });
+
+    printBtn.addEventListener("click", () => {
+      if (!isAdmin()) {
+        showStatus("Admin login required for printing reports.");
+        return;
+      }
+      window.print();
+    });
+
+    loginForm.addEventListener("submit", event => {
+      event.preventDefault();
+      const role = loginRole.value;
+      const user = USERS[role];
+      if (user && loginUser.value.trim() === user.username && loginPass.value === user.password) {
+        loginError.textContent = "";
+        loginPass.value = "";
+        saveSession(role);
+        return;
+      }
+      loginError.textContent = "Invalid login details.";
+    });
+
+    sidebarLogout.addEventListener("click", logout);
+    topbarLogout.addEventListener("click", logout);
+
+    function toCSV(rows) {
+      return rows.map(row => row.map(value => {
+        const text = String(value ?? "");
+        return '"' + text.replace(/"/g, '""') + '"';
+      }).join(",")).join("\n");
+    }
+
+    function downloadFile(filename, content, type) {
+      const blob = new Blob([content], { type });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = filename;
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+      URL.revokeObjectURL(url);
+    }
+
+    fields.selectedDate.value = todayISO();
+    fields.jobDate.value = fields.selectedDate.value;
+    updatePreview();
+    applyAuthState();
+  </script>
+</body>
+</html>
